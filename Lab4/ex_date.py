@@ -1,25 +1,31 @@
-import json
-
-with open("sample_data.json", "r") as my_file:
-    json_string = my_file.read()
-
-data = json.loads(json_string)
-
-interfaces = data.get('imdata', [])
+from datetime import datetime, timedelta
 
 
-print("Interface Status")
-print("=" * 80)
-print("{:<50} {:<20} {:<8} {:<6}".format("DN", "Description", "Speed", "MTU"))
-print("-" * 50, "-" * 20, "-" * 8, "-" * 6)
+#task3
+def drop_microseconds(date_mic):
+    return date_mic.strftime("%Y-%m-%d %H-%M-%S")
 
-for interface in interfaces[1:]:
-    l1_phys_if = interface.get('l1PhysIf', {})
-    attributes = l1_phys_if.get('attributes', {})
-    
-    dn = attributes.get('dn', '')
-    description = attributes.get('descr', '')
-    speed = attributes.get('speed', 'inherit')
-    mtu = attributes.get('mtu', '')
-    
-    print("{:<50} {:<20} {:<8} {:<6}".format(dn, description, speed, mtu))
+
+#task4
+def calculate_time_seconds(dat1, dat2):
+    time_difference = dat2 - dat1
+    return time_difference.total_seconds()
+
+
+#task1
+now_date = datetime.now()
+result_date = now_date - timedelta(days=5)
+
+print("Результат после вычитания пяти дней:", drop_microseconds(result_date))
+
+
+#task2
+today = datetime.now()
+yesterday = today - timedelta(days=1)
+tomorrow = today + timedelta(days=1)
+
+print("Вчера: ", drop_microseconds(yesterday))
+print("Сегодня: ", drop_microseconds(today))
+print("Завтра: ", drop_microseconds(tomorrow))
+
+print("Разница между вчерашним и завтрешним в секундах: ", calculate_time_seconds(yesterday, tomorrow))
