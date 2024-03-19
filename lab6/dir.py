@@ -54,8 +54,6 @@ def analyze_path(path):
         print("Filename:", os.path.basename(path))
     else:
         print("Path does not exist.")
-
-
 path = input("Enter the path: ")
 analyze_path(path)
 
