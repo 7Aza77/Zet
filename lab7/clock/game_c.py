@@ -13,13 +13,13 @@ clock = pg.time.Clock()
 
 pg.display.set_caption("Mickey Clock")
 
-sec = pg.image.load("pict/leftarm.png").convert_alpha()
-minute = pg.image.load("pict/rightarm.png").convert_alpha()
+sec = pg.image.load("pict/lef-hand.png").convert_alpha()
+minute = pg.image.load("pict/right-hand.png").convert_alpha()
 rectsec = sec.get_rect()
 rectmin = minute.get_rect()
 rectmin.center = rectsec.center = midle
 
-background = pg.image.load("pict/mainclock.png")
+background = pg.image.load("pict/main-clock.png")
 run =True
 
 angle1 = 0
@@ -51,7 +51,7 @@ while run:
     screen.blit(leg2, rect2)
     
 
-    #screen.blit(background, (0, 0))
-    #pg.draw.circle(screen, (0, 0, 0), (500, 500), 490, 5)
+    screen.blit(background, (0, 0))
+    pg.draw.circle(screen, (0, 0, 0), (500, 500), 490, 5)
     pg.display.flip()
     clock.tick(60)
